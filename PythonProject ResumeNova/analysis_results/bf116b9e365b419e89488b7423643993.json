@@ -1,0 +1,321 @@
+{
+  "overall_score": 48,
+  "resume_analysis_score": 72,
+  "ats_score": 88,
+  "job_match_score": 18,
+  "role_relevance_score": 16,
+  "content_score": 53,
+  "overall_breakdown": [
+    {
+      "name": "Resume Analysis",
+      "score": 72,
+      "weight": "20%"
+    },
+    {
+      "name": "ATS Compatibility",
+      "score": 88,
+      "weight": "20%"
+    },
+    {
+      "name": "Job Match",
+      "score": 18,
+      "weight": "30%"
+    },
+    {
+      "name": "Role Relevance",
+      "score": 16,
+      "weight": "15%"
+    },
+    {
+      "name": "Content Quality",
+      "score": 53,
+      "weight": "15%"
+    }
+  ],
+  "resume_analysis_breakdown": [
+    {
+      "name": "ATS Compatibility",
+      "value": 88,
+      "weight": "35%"
+    },
+    {
+      "name": "Content Quality",
+      "value": 53,
+      "weight": "35%"
+    },
+    {
+      "name": "Resume Structure",
+      "value": 62,
+      "weight": "20%"
+    },
+    {
+      "name": "Contact Completeness",
+      "value": 100,
+      "weight": "10%"
+    }
+  ],
+  "ats_breakdown": [
+    {
+      "name": "PDF Text Extractability",
+      "score": 20,
+      "max": 20
+    },
+    {
+      "name": "Contact Information",
+      "score": 20,
+      "max": 20
+    },
+    {
+      "name": "Standard Resume Sections",
+      "score": 18,
+      "max": 30
+    },
+    {
+      "name": "Formatting & Structure",
+      "score": 30,
+      "max": 30
+    }
+  ],
+  "content_breakdown": [
+    {
+      "name": "Content Substance",
+      "score": 15,
+      "max": 20
+    },
+    {
+      "name": "Core Content Sections",
+      "score": 18,
+      "max": 30
+    },
+    {
+      "name": "Action-Oriented Language",
+      "score": 0,
+      "max": 20
+    },
+    {
+      "name": "Measurable Evidence",
+      "score": 10,
+      "max": 15
+    },
+    {
+      "name": "Supporting Sections",
+      "score": 10,
+      "max": 15
+    }
+  ],
+  "resume_analysis_evidence": [
+    "ATS Compatibility: 88/100 (35% of Resume Analysis Score).",
+    "Content Quality: 53/100 (35%).",
+    "5 of 8 analyzed resume sections were detected, producing a structure score of 62/100 (20%).",
+    "Contact completeness score: 100/100 (10%)."
+  ],
+  "ats_evidence": [
+    "PDF contains substantial machine-readable text.",
+    "Email address detected.",
+    "Phone number detected.",
+    "3 of 5 common resume sections were detected.",
+    "Resume length is 1 page(s).",
+    "Font usage appears reasonably consistent.",
+    "A manageable font-size hierarchy was detected.",
+    "0 image(s) detected; the PDF is not heavily image-dependent.",
+    "Extracted text does not show excessive fragmentation."
+  ],
+  "job_match_evidence": [
+    "10 of 43 meaningful JD terms were detected in the resume.",
+    "10 of 95 meaningful JD phrases were detected in the resume."
+  ],
+  "role_evidence": [
+    "0 of 3 target-role terms were directly detected in the resume.",
+    "Job-description alignment contributes the primary role evidence (18/100)."
+  ],
+  "content_evidence": [
+    "Resume contains 182 words.",
+    "3 of 5 core content sections were detected.",
+    "Limited action-oriented language was detected.",
+    "2 measurable or quantified expression(s) were detected.",
+    "2 of 3 supporting sections were detected."
+  ],
+  "matched_keywords": [
+    "communication",
+    "teamwork",
+    "time",
+    "management",
+    "microsoft",
+    "excel",
+    "data",
+    "computer",
+    "applications",
+    "problems"
+  ],
+  "missing_keywords": [
+    "customer",
+    "service",
+    "executive",
+    "effective",
+    "questions",
+    "requests",
+    "interpersonal",
+    "problem-solving",
+    "customer-handling",
+    "responding",
+    "inquiries",
+    "resolving",
+    "issues",
+    "records",
+    "interactions",
+    "information",
+    "verbal",
+    "written",
+    "active",
+    "listening",
+    "attention",
+    "detail",
+    "organizational",
+    "office",
+    "entry",
+    "documentation",
+    "email",
+    "communicate",
+    "professionally",
+    "team",
+    "members",
+    "timely",
+    "solutions"
+  ],
+  "matched_phrases": [
+    "teamwork time management",
+    "microsoft excel microsoft",
+    "of microsoft excel",
+    "basic computer applications",
+    "computer applications is",
+    "teamwork time",
+    "excel microsoft",
+    "time management",
+    "microsoft excel",
+    "computer applications"
+  ],
+  "missing_phrases": [
+    "strong communication interpersonal",
+    "communication interpersonal problem-solving",
+    "interpersonal problem-solving and",
+    "problem-solving and customer-handling",
+    "customer inquiries resolving",
+    "inquiries resolving customer",
+    "customer issues maintaining",
+    "issues maintaining service",
+    "service records documenting",
+    "records documenting interactions",
+    "documenting interactions and",
+    "interactions and providing",
+    "written communication active",
+    "communication active listening",
+    "active listening teamwork",
+    "listening teamwork time",
+    "time management attention",
+    "management attention to",
+    "detail and organizational",
+    "excel microsoft office",
+    "microsoft office data",
+    "office data entry",
+    "data entry documentation",
+    "entry documentation email",
+    "documentation email communication",
+    "email communication and",
+    "communicate professionally understand",
+    "professionally understand customer",
+    "customer requirements coordinate",
+    "team members maintain",
+    "members maintain records",
+    "records and provide",
+    "a customer service",
+    "customer service executive",
+    "service executive to",
+    "customers and provide",
+    "and provide effective",
+    "provide effective support",
+    "questions and service",
+    "and service requests",
+    "responding to customer",
+    "to customer inquiries",
+    "resolving customer issues",
+    "maintaining service records",
+    "providing accurate information",
+    "verbal and written",
+    "and written communication",
+    "attention to detail",
+    "to communicate professionally",
+    "coordinate with team",
+    "with team members",
+    "and provide timely",
+    "provide timely solutions",
+    "timely solutions to",
+    "solutions to customer",
+    "to customer problems",
+    "communication interpersonal",
+    "interpersonal problem-solving",
+    "inquiries resolving",
+    "records documenting",
+    "communication active",
+    "listening teamwork",
+    "management attention",
+    "office data",
+    "entry documentation",
+    "documentation email",
+    "customer service",
+    "service executive",
+    "provide effective",
+    "service requests",
+    "customer inquiries",
+    "resolving customer",
+    "customer issues",
+    "service records",
+    "documenting interactions",
+    "written communication",
+    "active listening",
+    "microsoft office",
+    "data entry",
+    "email communication",
+    "communicate professionally",
+    "team members",
+    "provide timely",
+    "timely solutions",
+    "customer problems"
+  ],
+  "role_terms": [
+    "customer",
+    "service",
+    "executive"
+  ],
+  "matched_role_terms": [],
+  "sections": {
+    "Summary / Objective": true,
+    "Education": true,
+    "Experience": false,
+    "Projects": false,
+    "Skills": true,
+    "Certifications": true,
+    "Achievements": false,
+    "Languages": true
+  },
+  "contact": {
+    "email": "siri.allampalli1@gmail.com",
+    "phone": "+91 8919008016",
+    "linkedin": null,
+    "github": null
+  },
+  "suggestions": [
+    "Neither an Experience nor Projects section was detected. Where applicable, include relevant employment, internship, academic project or practical evidence.",
+    "Limited action-oriented language was detected. Where accurate, describe work using clear action-focused statements.",
+    "Some requirements from the supplied job description were not detected in the resume: strong communication interpersonal, communication interpersonal problem-solving, interpersonal problem-solving and, problem-solving and customer-handling, customer inquiries resolving, customer, service, executive, effective, questions. Add only requirements that truthfully match your actual skills or experience.",
+    "A LinkedIn URL was not detected. Consider including a professional profile when relevant."
+  ],
+  "page_count": 1,
+  "word_count": 182,
+  "font_count": 2,
+  "font_size_count": 6,
+  "image_count": 0,
+  "resume_preview": "SIRI ALLAMPALLI\nAspiring Software Engineer\n+91 8919008016 | siri.allampalli1@gmail.com | Andhra Pradesh, India\nPROFESSIONAL SUMMARY\nMotivated and enthusiastic Computer Science student with a strong foundation in Python, SQL, HTML, CSS, Flask, and Data Analysis. Certified by\nMicrosoft, IBM, and Coursera. Passionate about software development, problem solving, continuous learning, and building real-world applications.\nSeeking a Trainee Software Engineer opportunity.\nTECHNICAL SKILLS\nProgramming\nPython\nJavaScript (Basic)\nWeb Technologies\nHTML5\nCSS3\nFlask (Basic)\nDatabase\nSQL\nMySQL\nData Analytics\nPower BI\nPandas\nTableau\nMicrosoft Excel\nCore Concepts\nOOP\nData Structures\nProblem Solving\nDebugging\nTools\nVS Code\nGit (Basic)\nEDUCATION\nBachelor of Computer Science (B.Sc)\nAditya Degree College\nGraduation: 2027\nCGPA: 8.4 / 10\nIntermediate\nSri Chaitanya Junior College\nPercentage: 78%\nSSC\nZPH School\nPercentage: 60%\nCERTIFICATIONS\nMachine Learning with Python — IBM\nMastering Data Analysis with Pandas — Coursera\nSQL using MySQL Workbench — Coursera\nData Analysis & Visualization with Power BI — Microsoft\nData Modeling in Power BI — Microsoft\nPreparing Data for Analysis with Microsoft Excel — Microsoft\nSOFT SKILLS\nProblem Solving\nCommunication\nAnalytical Thinking\nQuick Learner\nTeamwork\nAdaptability\nTime Management\nLANGUAGES\nEnglish\nTelugu",
+  "job_description": "We are looking for a Customer Service Executive to assist customers and provide effective support for their questions and service requests.\r\n\r\nThe candidate should have strong communication, interpersonal, problem-solving, and customer-handling skills. Responsibilities include responding to customer inquiries, resolving customer issues, maintaining service records, documenting interactions, and providing accurate information.\r\n\r\nThe role requires good verbal and written communication, active listening, teamwork, time management, attention to detail, and organizational skills.\r\n\r\nKnowledge of Microsoft Excel, Microsoft Office, data entry, documentation, email communication, and basic computer applications is preferred.\r\n\r\nThe candidate should be able to communicate professionally, understand customer requirements, coordinate with team members, maintain records, and provide timely solutions to customer problems.",
+  "filename": "Siri_Allampalli_Resume.pdf",
+  "job_role": "Customer Service Executive"
+}

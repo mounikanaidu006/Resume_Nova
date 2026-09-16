@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ResumeNova - Universal Evidence-Based Resume Analyzer"
+    >
+
+    <title>ResumeNova | Analyze Resume</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+
+<body>
+
+<!-- ==============================
+     NAVIGATION
+================================ -->
+
+<nav class="navbar">
+
+    <div class="brand">
+        ResumeNova
+    </div>
+
+    <div class="nav-right">
+
+        <span class="welcome-user">
+            Hi, {{ user_name }}
+        </span>
+
+        <a
+            href="{{ url_for('logout') }}"
+            class="logout-link"
+        >
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==============================
+     MAIN PAGE
+================================ -->
+
+<main class="upload-wrapper">
+
+    <div class="upload-card">
+
+
+        <!-- HEADER -->
+
+        <div class="mini-badge">
+            UNIVERSAL RESUME ANALYZER
+        </div>
+
+        <h1>
+            Analyze Your Resume
+        </h1>
+
+        <p class="subtitle">
+            Get transparent, evidence-based resume scoring
+            using your actual resume, target job role,
+            job description and ATS formatting indicators.
+        </p>
+
+
+        <!-- ERROR -->
+
+        {% if error %}
+
+        <div
+            class="error"
+            role="alert"
+        >
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <!-- ANALYSIS FORM -->
+
+        <form
+            method="POST"
+            action="{{ url_for('analyze') }}"
+            enctype="multipart/form-data"
+            class="analysis-form"
+        >
+
+
+            <!-- RESUME -->
+
+            <div class="form-group">
+
+                <label for="resume">
+                    Resume PDF *
+                </label>
+
+                <input
+                    type="file"
+                    id="resume"
+                    name="resume"
+                    accept=".pdf,application/pdf"
+                    required
+                >
+
+                <small class="field-help">
+                    Upload your resume in PDF format.
+                </small>
+
+            </div>
+
+
+            <!-- JOB ROLE -->
+
+            <div class="form-group">
+
+                <label for="job_role">
+                    Target Job Role *
+                </label>
+
+                <input
+                    type="text"
+                    id="job_role"
+                    name="job_role"
+                    placeholder="Example: Data Scientist, Teacher, Accountant, HR Executive..."
+                    required
+                >
+
+                <small class="field-help">
+                    Enter any IT or Non-IT job role.
+                </small>
+
+            </div>
+
+
+            <!-- JOB DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label for="job_description">
+                    Job Description *
+                </label>
+
+                <textarea
+                    id="job_description"
+                    name="job_description"
+                    rows="10"
+                    minlength="30"
+                    placeholder="Paste the complete job description here..."
+                    required
+                ></textarea>
+
+                <small class="field-help">
+                    Job Description is required for
+                    evidence-based job matching and role relevance.
+                </small>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Analyze Resume
+            </button>
+
+        </form>
+
+
+        <!-- ANALYSIS INFO -->
+
+        <div class="analysis-info">
+
+            <h3>
+                What ResumeNova analyzes
+            </h3>
+
+            <div class="analysis-features">
+
+                <div class="feature-item">
+                    <strong>Resume Analysis</strong>
+                    <span>
+                        Structure, completeness and resume evidence
+                    </span>
+                </div>
+
+                <div class="feature-item">
+                    <strong>ATS Compatibility</strong>
+                    <span>
+                        Extractability, headings, contact details
+                        and formatting indicators
+                    </span>
+                </div>
+
+                <div class="feature-item">
+                    <strong>Job Match</strong>
+                    <span>
+                        Actual resume-to-job-description matching
+                    </span>
+                </div>
+
+                <div class="feature-item">
+                    <strong>Role Relevance</strong>
+                    <span>
+                        Resume evidence compared with the
+                        target role and JD
+                    </span>
+                </div>
+
+                <div class="feature-item">
+                    <strong>Content Quality</strong>
+                    <span>
+                        Content completeness, action language
+                        and measurable evidence
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMPORTANT NOTE -->
+
+        <div class="professional-note">
+
+            <strong>
+                Evidence-Based Analysis
+            </strong>
+
+            <p>
+                ResumeNova does not assign scores based on a
+                predefined job role. The analysis is generated
+                from the uploaded resume, its detectable PDF
+                structure, the role entered, and the supplied
+                job description.
+            </p>
+
+            <p>
+                A requirement shown as “not found” means that
+                ResumeNova could not detect that requirement
+                in the resume. It does not automatically mean
+                that the candidate does not possess that skill.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ResumeNova | Analysis Report</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<!-- ==========================================
+     NAVBAR
+=========================================== -->
+
+<nav class="navbar">
+
+    <div class="brand">
+        ResumeNova
+    </div>
+
+    <div class="nav-right">
+
+        <span>
+            Hi, {{ user_name }}
+        </span>
+
+        <a href="{{ url_for('upload') }}">
+            New Analysis
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==========================================
+     RESULTS
+=========================================== -->
+
+<main class="results-container">
+
+
+    <!-- REPORT HEADER -->
+
+    <section class="report-header">
+
+        <div class="mini-badge">
+            ANALYSIS COMPLETE
+        </div>
+
+        <h1>
+            Resume Analysis Report
+        </h1>
+
+        <p>
+            Resume:
+            <strong>
+                {{ result.filename }}
+            </strong>
+        </p>
+
+        <p>
+            Target Job Role:
+            <strong>
+                {{ result.job_role }}
+            </strong>
+        </p>
+
+    </section>
+
+
+    <!-- ======================================
+         OVERALL SCORE
+    ======================================= -->
+
+    <section class="overall-card">
+
+        <p class="overall-label">
+            OVERALL SCORE
+        </p>
+
+        <div class="overall-score">
+
+            {{ result.overall_score }}
+
+            <span>
+                /100
+            </span>
+
+        </div>
+
+        <p>
+            Calculated from the actual resume,
+            ATS evidence, job-description match,
+            role relevance and content quality.
+        </p>
+
+    </section>
+
+
+    <!-- ======================================
+         MAIN SCORE CARDS
+    ======================================= -->
+
+    <section class="score-grid">
+
+        <div class="score-card">
+
+            <h3>
+                Resume Analysis
+            </h3>
+
+            <div class="score-number">
+                {{ result.resume_analysis_score }}/100
+            </div>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <h3>
+                ATS Compatibility
+            </h3>
+
+            <div class="score-number">
+                {{ result.ats_score }}/100
+            </div>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <h3>
+                Job Match
+            </h3>
+
+            <div class="score-number">
+                {{ result.job_match_score }}/100
+            </div>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <h3>
+                Role Relevance
+            </h3>
+
+            <div class="score-number">
+                {{ result.role_relevance_score }}/100
+            </div>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <h3>
+                Content Quality
+            </h3>
+
+            <div class="score-number">
+                {{ result.content_score }}/100
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         OVERALL SCORE CALCULATION
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Overall Score Calculation
+        </h2>
+
+        <p class="section-description">
+            The overall score is calculated from
+            the five evidence-based analysis components below.
+        </p>
+
+
+        <div class="breakdown-grid">
+
+            {% for item in result.overall_breakdown %}
+
+            <div class="breakdown-item">
+
+                <strong>
+                    {{ item.name }}
+                </strong>
+
+                <span>
+                    {{ item.score }}/100
+                </span>
+
+                <small>
+                    Weight: {{ item.weight }}
+                </small>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div class="formula-box">
+
+            <strong>
+                Formula
+            </strong>
+
+            <p>
+                Resume Analysis 20%
+                + ATS Compatibility 20%
+                + Job Match 30%
+                + Role Relevance 15%
+                + Content Quality 15%
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         RESUME ANALYSIS SCORE
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Resume Analysis Score
+        </h2>
+
+        <div class="large-score">
+            {{ result.resume_analysis_score }}/100
+        </div>
+
+        <p class="section-description">
+            Measures overall resume quality using
+            ATS compatibility, content quality,
+            resume structure and contact completeness.
+        </p>
+
+
+        <h3>
+            Score Breakdown
+        </h3>
+
+        <div class="breakdown-grid">
+
+            {% for item in result.resume_analysis_breakdown %}
+
+            <div class="breakdown-item">
+
+                <strong>
+                    {{ item.name }}
+                </strong>
+
+                <span>
+                    {{ item.value }}/100
+                </span>
+
+                <small>
+                    Weight: {{ item.weight }}
+                </small>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <h3 class="top-space">
+            Evidence
+        </h3>
+
+        <div class="evidence-box">
+
+            {% for item in result.resume_analysis_evidence %}
+
+            <p>
+                ✓ {{ item }}
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         ATS COMPATIBILITY
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            ATS Compatibility Score
+        </h2>
+
+        <div class="large-score">
+            {{ result.ats_score }}/100
+        </div>
+
+        <p class="section-description">
+            Based on detectable PDF text,
+            contact information, standard resume sections
+            and formatting indicators.
+        </p>
+
+
+        <h3>
+            ATS Score Breakdown
+        </h3>
+
+        <div class="breakdown-grid">
+
+            {% for item in result.ats_breakdown %}
+
+            <div class="breakdown-item">
+
+                <strong>
+                    {{ item.name }}
+                </strong>
+
+                <span>
+                    {{ item.score }}/{{ item.max }}
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <h3 class="top-space">
+            ATS Evidence
+        </h3>
+
+        <div class="evidence-box">
+
+            {% for item in result.ats_evidence %}
+
+            <p>
+                • {{ item }}
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         JOB MATCH
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Job Description Match
+        </h2>
+
+        <div class="large-score">
+            {{ result.job_match_score }}/100
+        </div>
+
+        <p class="section-description">
+            Compares the uploaded resume with the
+            job description supplied during analysis.
+        </p>
+
+
+        <h3>
+            Match Evidence
+        </h3>
+
+        <div class="evidence-box">
+
+            {% for item in result.job_match_evidence %}
+
+            <p>
+                • {{ item }}
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- MATCHED KEYWORDS -->
+
+        <h3 class="top-space">
+            JD Terms Found in Resume
+        </h3>
+
+        {% if result.matched_keywords %}
+
+        <div class="tags">
+
+            {% for keyword in result.matched_keywords %}
+
+            <span class="tag success">
+                ✓ {{ keyword }}
+            </span>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <p class="muted-text">
+            No important JD terms were directly found
+            in the resume.
+        </p>
+
+        {% endif %}
+
+
+        <!-- MATCHED PHRASES -->
+
+        {% if result.matched_phrases %}
+
+        <h3 class="top-space">
+            JD Phrases Found
+        </h3>
+
+        <div class="tags">
+
+            {% for phrase in result.matched_phrases %}
+
+            <span class="tag success">
+                ✓ {{ phrase }}
+            </span>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- MISSING TERMS -->
+
+        <h3 class="top-space">
+            JD Terms Not Found in Resume
+        </h3>
+
+        {% if result.missing_keywords %}
+
+        <div class="tags">
+
+            {% for keyword in result.missing_keywords %}
+
+            <span class="tag missing">
+                {{ keyword }}
+            </span>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div class="note">
+
+            <strong>
+                Important:
+            </strong>
+
+            <p>
+                “Not found” means that the term was not
+                detected in the uploaded resume.
+                It does not prove that the candidate
+                does not possess that skill or experience.
+            </p>
+
+        </div>
+
+        {% else %}
+
+        <p>
+            All analyzed JD terms were detected
+            in the resume.
+        </p>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ======================================
+         ROLE RELEVANCE
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Role Relevance Score
+        </h2>
+
+        <div class="large-score">
+            {{ result.role_relevance_score }}/100
+        </div>
+
+        <p class="section-description">
+            Evaluates how strongly the resume evidence
+            aligns with the entered target role and
+            supplied job description.
+        </p>
+
+
+        <h3>
+            Evidence
+        </h3>
+
+        <div class="evidence-box">
+
+            {% for item in result.role_evidence %}
+
+            <p>
+                • {{ item }}
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+
+        {% if result.matched_role_terms %}
+
+        <h3 class="top-space">
+            Target Role Terms Found
+        </h3>
+
+        <div class="tags">
+
+            {% for term in result.matched_role_terms %}
+
+            <span class="tag success">
+                ✓ {{ term }}
+            </span>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ======================================
+         CONTENT QUALITY
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Content Quality Score
+        </h2>
+
+        <div class="large-score">
+            {{ result.content_score }}/100
+        </div>
+
+        <p class="section-description">
+            Measures resume substance,
+            content sections, action-oriented language,
+            measurable evidence and supporting sections.
+        </p>
+
+
+        <h3>
+            Content Score Breakdown
+        </h3>
+
+        <div class="breakdown-grid">
+
+            {% for item in result.content_breakdown %}
+
+            <div class="breakdown-item">
+
+                <strong>
+                    {{ item.name }}
+                </strong>
+
+                <span>
+                    {{ item.score }}/{{ item.max }}
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <h3 class="top-space">
+            Content Evidence
+        </h3>
+
+        <div class="evidence-box">
+
+            {% for item in result.content_evidence %}
+
+            <p>
+                • {{ item }}
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         SECTIONS DETECTED
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Resume Sections Detected
+        </h2>
+
+        <div class="section-grid">
+
+            {% for section, detected in result.sections.items() %}
+
+            <div class="section-item">
+
+                <strong>
+                    {{ section }}
+                </strong>
+
+                {% if detected %}
+
+                <span class="detected">
+                    ✓ Detected
+                </span>
+
+                {% else %}
+
+                <span class="not-detected">
+                    ✕ Not Detected
+                </span>
+
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         CONTACT
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Contact Information
+        </h2>
+
+        <div class="details-grid">
+
+            <div>
+
+                <strong>
+                    Email
+                </strong>
+
+                <p>
+                    {{ result.contact.email or "Not detected" }}
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Phone
+                </strong>
+
+                <p>
+                    {{ result.contact.phone or "Not detected" }}
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    LinkedIn
+                </strong>
+
+                <p>
+                    {{ result.contact.linkedin or "Not detected" }}
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    GitHub
+                </strong>
+
+                <p>
+                    {{ result.contact.github or "Not detected" }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         PDF STRUCTURE
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Resume & PDF Structure
+        </h2>
+
+        <p class="section-description">
+            These are observable properties detected
+            from the uploaded PDF.
+        </p>
+
+        <div class="details-grid">
+
+            <div>
+
+                <strong>
+                    Pages
+                </strong>
+
+                <p>
+                    {{ result.page_count }}
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Extracted Words
+                </strong>
+
+                <p>
+                    {{ result.word_count }}
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Fonts Detected
+                </strong>
+
+                <p>
+                    {{ result.font_count }}
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Font Sizes Detected
+                </strong>
+
+                <p>
+                    {{ result.font_size_count }}
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Images Detected
+                </strong>
+
+                <p>
+                    {{ result.image_count }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         SUGGESTIONS
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Evidence-Based Suggestions
+        </h2>
+
+        <p class="section-description">
+            Suggestions are generated from information
+            that was or was not detected during analysis.
+        </p>
+
+
+        {% if result.suggestions %}
+
+            {% for suggestion in result.suggestions %}
+
+            <div class="suggestion">
+
+                <span class="suggestion-number">
+                    {{ loop.index }}
+                </span>
+
+                <p>
+                    {{ suggestion }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+        <p>
+            No major evidence-based suggestions
+            were generated.
+        </p>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ======================================
+         RESUME PREVIEW
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Extracted Resume Preview
+        </h2>
+
+        <p class="section-description">
+            This is the machine-readable text
+            ResumeNova used for the analysis.
+        </p>
+
+        <pre class="resume-preview">{{ result.resume_preview }}</pre>
+
+    </section>
+
+
+    <!-- ======================================
+         DISCLAIMER
+    ======================================= -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            About This Analysis
+        </h2>
+
+        <div class="note">
+
+            <p>
+                ResumeNova provides an explainable
+                resume assessment using detectable PDF
+                properties and resume-to-job-description
+                text matching.
+            </p>
+
+            <p>
+                Actual applicant tracking systems and
+                employer evaluation methods can use
+                different parsing and ranking rules.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         NEW ANALYSIS
+    ======================================= -->
+
+    <div class="bottom-action">
+
+        <a
+            href="{{ url_for('upload') }}"
+            class="primary-link"
+        >
+            Analyze Another Resume
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

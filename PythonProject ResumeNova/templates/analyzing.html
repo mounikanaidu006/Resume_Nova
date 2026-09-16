@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ResumeNova is analyzing your resume"
+    >
+
+    <title>ResumeNova | Analyzing Resume</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <!-- Automatically open result page -->
+    <meta
+        http-equiv="refresh"
+        content="2;url={{ url_for('result') }}"
+    >
+</head>
+
+
+<body>
+
+<div class="page-center">
+
+    <div class="analysis-card">
+
+        <!-- SPINNER -->
+
+        <div class="spinner"></div>
+
+
+        <!-- STATUS -->
+
+        <div class="mini-badge">
+            ANALYSIS IN PROGRESS
+        </div>
+
+
+        <h1>
+            Analyzing Your Resume
+        </h1>
+
+
+        <p class="subtitle">
+            ResumeNova is evaluating your uploaded resume
+            using actual resume content, job requirements
+            and detectable ATS formatting evidence.
+        </p>
+
+
+        <!-- ANALYSIS STEPS -->
+
+        <div class="analysis-steps">
+
+            <div class="analysis-step">
+                <span class="step-icon">✓</span>
+
+                <div>
+                    <strong>Resume Content</strong>
+                    <p>
+                        Reading machine-readable resume text
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="analysis-step">
+                <span class="step-icon">✓</span>
+
+                <div>
+                    <strong>ATS Compatibility</strong>
+                    <p>
+                        Checking structure and formatting indicators
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="analysis-step">
+                <span class="step-icon">✓</span>
+
+                <div>
+                    <strong>Job Description Match</strong>
+                    <p>
+                        Comparing resume evidence with JD requirements
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="analysis-step">
+                <span class="step-icon">✓</span>
+
+                <div>
+                    <strong>Role Relevance</strong>
+                    <p>
+                        Evaluating relevance to the target job role
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="analysis-step">
+                <span class="step-icon">✓</span>
+
+                <div>
+                    <strong>Content Quality</strong>
+                    <p>
+                        Evaluating resume content and supporting evidence
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <p class="analysis-message">
+            Preparing your evidence-based report...
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
